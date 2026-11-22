@@ -8,49 +8,111 @@
 <link rel="icon" href="/img/favicon-64.png" type="image/png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="stylesheet" href="/style.css">
+<script type="importmap">{"imports":{"three":"/js/three.module.min.js"}}</script>
 </head>
 <body>
 <header class="site"><div class="bar">
 <a class="brand" href="/"><img src="/img/favicon-64.png" alt="" width="34" height="34">Doppelmaker</a>
 <nav><a href="/" aria-current="page">Home</a><a href="/support.html">Support</a><a href="/privacy.html">Privacy</a></nav>
 </div></header>
-<section class="hero"><div class="inner">
+<section class="hero2"><div class="inner">
 <div>
-<span class="tape">In development · TestFlight beta coming</span>
-<h1>A dress form shaped exactly like you.</h1>
-<p>Doppelmaker turns an iPhone scan into a custom dress form or wig head that you print yourself: a rigid core under a soft, pinnable shell, split into pieces that fit your printer.</p>
-<p>Everything stays on your own devices.</p>
+<span class="tape" style="display:inline-block;background:var(--tape);color:#1b2523;font-weight:700;font-size:14px;padding:3px 10px;border-radius:4px">In development · TestFlight beta coming</span>
+<h1>Your body double, <em>printed.</em></h1>
+<p class="lede">Doppelmaker scans a person with two iPhones and turns the scan into a custom dress form or wig head you print yourself: a rigid core under a soft, pinnable shell, cut into pieces that fit your printer.</p>
+<div class="btns"><a class="btn primary" href="#how">See how it works</a><a class="btn ghost" href="#spin">Spin one in 3D</a></div>
 </div>
-<img src="/img/icon-512.png" alt="Doppelmaker app icon: a dress form with measuring tape rings" width="260" height="260">
+<figure class="art" style="margin:0"><img src="/img/shots/exploded.webp" width="1165" height="1155" alt="A custom dress form pulled apart into its printed pieces: a lower torso, two upper halves and two arm pieces, each a green TPU shell over a cream core">
+<figcaption>Every piece of a form, pulled apart. Green: soft TPU shell. Cream: rigid core.</figcaption></figure>
 </div></section>
-<main>
-<h2>Two apps, one workshop</h2>
-<div class="cards">
-<div class="card"><h3>Doppelmaker Scanner</h3><p>For iPhone. Records the camera, LiDAR depth and motion while the person turns, and sends each recording to your Mac over your own Wi-Fi.</p></div>
-<div class="card"><h3>Doppelmaker Studio</h3><p>For Mac. Builds the 3D shape, finds the landmarks and cut lines, lets you adjust them, and exports print-ready files for your slicer.</p></div>
+
+<div class="wide">
+<p class="kicker" id="how">How it works</p>
+<h2 class="big">From a two-minute scan to parts on the print bed</h2>
+<p class="sub">The pictures below come from Doppelmaker's digital twin: a simulated person, simulated phones, and the real software processing what they record. Real-world results come with the first beta.</p>
+<div class="steps4">
+<div class="step"><div class="pic"><img class="fill" src="/img/shots/outline.webp" width="720" height="960" loading="lazy" alt="A phone camera frame of the simulated subject with her detected outline drawn in green"></div>
+<div class="txt"><h3>Scan</h3><p>She turns slowly on a turntable while two fixed iPhones record camera, LiDAR depth and motion. Doppelmaker finds her outline in every frame, even with people or pets moving behind her.</p></div></div>
+<div class="step"><div class="pic"><img src="/img/shots/body.webp" width="932" height="1082" loading="lazy" alt="The reconstructed torso with yellow measuring rings at bust, underbust, waist and hip"></div>
+<div class="txt"><h3>Shape</h3><p>LiDAR and outlines from both phones are fused into one surface, with her sway and breathing taken out. Landmarks and tape measurements are found automatically.</p></div></div>
+<div class="step"><div class="pic"><img src="/img/shots/assembled.webp" width="1064" height="1173" loading="lazy" alt="The finished dress form, assembled"></div>
+<div class="txt"><h3>Design</h3><p>Set the neckline, shoulders, arm pieces and hem in Studio. Doppelmaker builds a rigid core inside a soft shell that takes pins, with keys so the pieces only go together one way.</p></div></div>
+<div class="step"><div class="pic"><img src="/img/shots/plate.webp" width="640" height="558" loading="lazy" alt="One upper half of the form on the print bed: green shell around a cream core with its rod channel"></div>
+<div class="txt"><h3>Print</h3><p>The form is cut where it prints best for your printer: as few pieces as fit the bed, oriented to need almost no supports, exported straight to Bambu Studio.</p></div></div>
 </div>
 
-<h2>How it works</h2>
-<ol class="steps">
-<li><b>Set up the rig.</b> Two iPhones on stands, the person on a turntable, and a printed calibration target.</li>
-<li><b>Scan.</b> One or two slow turns. The phones record; the person stands naturally.</li>
-<li><b>Check and adjust.</b> Studio shows the fitted shape, the measurements and where the form will be cut: neck, shoulders, arms, hem.</li>
-<li><b>Print.</b> Studio splits the form to fit your printer bed and exports the parts: a rigid core and a soft TPU shell you can pin into.</li>
-</ol>
-
-<h2>What you need</h2>
-<div class="cards">
-<div class="card"><h3>iPhones</h3><p>Pro models with LiDAR (iPhone 12 Pro or later), iOS 17 or later. Two phones for the rig.</p></div>
-<div class="card"><h3>A Mac</h3><p>With Apple silicon. Studio does all the processing locally.</p></div>
-<div class="card"><h3>A 3D printer</h3><p>Ideally one that prints two materials: a rigid core (PLA or PETG) and a flexible TPU shell.</p></div>
+<img class="plates" src="/img/shots/plates.webp" width="1379" height="582" loading="lazy" alt="Five build plates, each with one printed piece of the dress form in its print orientation">
+<p class="cap">The same form laid out for a Bambu Lab H3C: five plates, each piece turned to print with almost no support.</p>
 </div>
 
-<h2>Private by design</h2>
-<p>Body scans are personal. Doppelmaker has no accounts, no cloud processing and no analytics. Recordings go from the phone to your Mac on your local network and nowhere else. Details in the <a href="/privacy.html">privacy policy</a>.</p>
+<section class="band"><div class="wide">
+<p class="kicker">Accuracy</p>
+<h2 class="big">Millimetres, not sizes</h2>
+<p class="sub">A dress form is only useful if it measures like the person. On the digital twin, with LiDAR errors that don't average away and a subject who leans and breathes, Doppelmaker's tape measurements land within a couple of millimetres:</p>
+<div class="stats">
+<div class="stat"><b>+0.7 mm</b><span>bust girth</span></div>
+<div class="stat"><b>−0.2 mm</b><span>underbust girth</span></div>
+<div class="stat"><b>+1.8 mm</b><span>waist girth</span></div>
+<div class="stat"><b>0.4 mm</b><span>median surface error</span></div>
+</div>
+<p class="cap">Simulated results; LiDAR alone was 11–13 mm short on the same scan. Real-world numbers will be published as they're measured.</p>
+</div></section>
 
-<h2>Status</h2>
-<p class="note">Doppelmaker is in active development and not yet available on the App Store. A TestFlight beta for a small group of testers comes first. Questions: <a href="mailto:support@doppelmaker.app">support@doppelmaker.app</a>.</p>
-</main>
+<div class="wide">
+<p class="kicker">The rig</p>
+<h2 class="big">Two phones, a turntable and a printed target</h2>
+<div class="split">
+<svg class="rigsvg" viewBox="0 0 520 360" style="overflow:visible" role="img" aria-label="Side view of the rig: phone A on a stand at 1 metre in front of the subject, phone B on a stand at 1.5 metres to her side, the subject standing on a turntable">
+  <line x1="20" y1="330" x2="500" y2="330" stroke="var(--rule)" stroke-width="2"/>
+  <ellipse cx="260" cy="322" rx="70" ry="10" fill="#2c5a4b"/>
+  <circle cx="260" cy="112" r="15" fill="#eeeae0" stroke="#2c5a4b" stroke-width="2"/>
+  <path d="M254 126 h12 v8 Q282 134 296 142 L304 222 L293 224 L287 172 L283 205 L291 242 L281 312 L264 312 L260 252 L256 312 L239 312 L229 242 L237 205 L233 172 L227 224 L216 222 L224 142 Q238 134 254 134 Z" fill="#eeeae0" stroke="#2c5a4b" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M233 174 a27 6 0 0 0 54 0" fill="none" stroke="#f0c419" stroke-width="3"/>
+  <path d="M237 206 a23 5 0 0 0 46 0" fill="none" stroke="#f0c419" stroke-width="3"/>
+  <path d="M229 240 a31 6 0 0 0 62 0" fill="none" stroke="#f0c419" stroke-width="3"/>
+  <line x1="70" y1="330" x2="70" y2="190" stroke="#55625e" stroke-width="4"/><rect x="62" y="174" width="18" height="30" rx="3" fill="#1b2523"/>
+  <path d="M80 189 L230 150 M80 189 L230 300" stroke="#f0c419" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <text x="40" y="150">Phone A</text><text x="40" y="166" style="font-weight:400">front, 1.0 m</text>
+  <line x1="450" y1="330" x2="450" y2="140" stroke="#55625e" stroke-width="4"/><rect x="432" y="124" width="18" height="30" rx="3" fill="#1b2523"/>
+  <path d="M432 139 L290 100 M432 139 L290 300" stroke="#f0c419" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <text x="420" y="98">Phone B</text><text x="420" y="114" style="font-weight:400">side, 1.5 m</text>
+  <text x="338" y="324">turntable</text>
+  <path d="M196 336 a64 9 0 0 0 128 0" fill="none" stroke="#55625e" stroke-width="1.5" marker-end="url(#ah)"/>
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#55625e"/></marker></defs>
+</svg>
+<div>
+<p>The phones stay put; the person turns. Fixed phones never lose track of the room, so Doppelmaker can follow her own small movements (a lean, a breath) and take them out, which a hand-held scan can't.</p>
+<p>Before each session, a printed calibration <b>castle</b> tells Doppelmaker exactly where the phones are. A larger <b>test target</b>, a shape of precisely known size, checks the whole chain end to end.</p>
+<div class="pair">
+<figure><img src="/img/shots/castle.webp" width="861" height="1037" loading="lazy" alt="Calibration castle"><figcaption class="cap">Calibration castle</figcaption></figure>
+<figure><img src="/img/shots/target.webp" width="1000" height="967" loading="lazy" alt="Test target"><figcaption class="cap">Test target</figcaption></figure>
+</div>
+</div>
+</div>
+
+<p class="kicker" id="spin">Try it</p>
+<h2 class="big">Spin a form in 3D</h2>
+<p class="sub">The dress form from the digital twin. Drag to turn it, pinch or scroll to zoom, and pull it apart to see how the pieces fit.</p>
+<div class="viewer" id="viewer"><button class="load" id="load3d">Load the 3D model (2 MB)</button><button id="explode" hidden>Pull it apart</button><span class="hint">Drag to rotate · scroll or pinch to zoom</span></div>
+
+<p class="kicker">Also</p>
+<h2 class="big">Wig heads</h2>
+<p class="sub">The same pipeline scans a head and neck and finds the hairline and any marked lines in the photos, then engraves them into the printed head as fine grooves, so a wig maker's block matches the wearer exactly.</p>
+
+<div class="cards" style="margin-top:8px">
+<div class="card"><h3>Doppelmaker Scanner</h3><p>For iPhone (Pro models with LiDAR, iOS 17+). Records the scan and sends it to your Mac over your own Wi-Fi.</p></div>
+<div class="card"><h3>Doppelmaker Studio</h3><p>For Mac with Apple silicon. Builds the shape, lets you adjust landmarks and cuts, and exports print-ready files.</p></div>
+<div class="card"><h3>Private by design</h3><p>No accounts, no cloud, no analytics. Scans go from your phone to your Mac and nowhere else. <a href="/privacy.html">Privacy policy</a>.</p></div>
+</div>
+
+<p class="note" style="margin-top:28px">Doppelmaker is in active development and not yet on the App Store. A TestFlight beta for a small group comes first. Questions: <a href="mailto:support@doppelmaker.app">support@doppelmaker.app</a>.</p>
+</div>
+<script type="module">
+const b = document.getElementById("load3d");
+b.addEventListener("click", async () => { b.disabled = true; b.textContent = "Loading…";
+  try { const m = await import("/js/viewer.js"); await m.start(document.getElementById("viewer")); }
+  catch (e) { b.disabled = false; b.textContent = "Couldn't load the model. Try again"; console.error(e); } });
+</script>
 <footer class="site"><div class="bar">
 <span>&copy; 2026 Greg Link. Doppelmaker is an independent project.</span>
 <a href="/support.html">Support</a>
