@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A scan, start to finish · Doppelmaker</title>
+<meta name="description" content="A walkthrough of a Doppelmaker session in Studio: what you see, what to do and what the messages mean.">
+<meta property="og:title" content="A scan, start to finish · Doppelmaker">
+<meta property="og:description" content="A walkthrough of a Doppelmaker session in Studio: what you see, what to do and what the messages mean.">
+<meta property="og:image" content="https://doppelmaker.app/img/og.png">
+<meta name="theme-color" content="#1f4d45">
+<link rel="icon" href="/img/favicon-64.png" type="image/png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" href="/fonts/young-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css">
+
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="brand" href="/"><img src="/img/favicon-64.png" alt="" width="32" height="32">Doppelmaker</a>
+<nav aria-label="Main"><a href="/how-it-works.html">How it works</a><a href="/rig.html">The rig</a><a href="/guide.html" aria-current="page">Guide</a><a href="/support.html">Support</a></nav>
+</div></header>
+<section class="pagehead"><div class="wrap">
+<h1>A scan, start to finish</h1>
+<p>What the operator sees in Doppelmaker Studio at each step of a session, what to do, what to say to the person being scanned, and what the messages mean.</p>
+</div></section>
+
+<main class="wrap article">
+<nav class="toc" aria-label="On this page"><ol>
+<li><a href="#console">The rig page</a></li>
+<li><a href="#phones">Connect the phones</a></li>
+<li><a href="#calibrate">Calibrate</a></li>
+<li><a href="#empty">Empty room</a></li>
+<li><a href="#subject">Get her ready</a></li>
+<li><a href="#scan">Scan</a></li>
+<li><a href="#finish">Arms up and finish</a></li>
+<li><a href="#check">Check the result</a></li>
+<li><a href="#messages">Messages</a></li>
+</ol></nav>
+
+<article class="prose shots">
+<p class="aside">The screens here come from Doppelmaker's digital twin: Studio running for real, with two simulated phones and a simulated person. Your room and your phones will look different; the steps are the same.</p>
+
+<h2 id="console">The rig page</h2>
+<p>With the person on a turntable and the phones on stands, you run the session from a chair at the Mac. Studio's <b>Fixed rig</b> page is laid out for that:</p>
+<ul>
+<li><b>Left:</b> what each phone sees, live, about twice a second.</li>
+<li><b>Right:</b> the current step. What to do, what to say to her, and the one button that does it. The space bar presses that button, so you can keep your eyes on her.</li>
+<li><b>Top:</b> the steps. Each turns green when it's done, and the page moves on by itself. Click any step to go back to it.</li>
+</ul>
+<p>Tick <b>Speak instructions to her</b> and the Mac reads the "Say to her" lines aloud, and tells her when each turn is done during the scan. Every step also has a folded <b>Why</b> if you want the reasoning.</p>
+
+<h2 id="phones">Connect the phones</h2>
+<p>On each iPhone, open Doppelmaker and turn on <b>Settings › Rig mode</b>. The phones appear under <b>Phones</b> on the rig page. Give the one in front of her role <b>A</b> and the one at her side role <b>B</b>. <b>Identify</b> flashes a phone's screen if you're not sure which is which.</p>
+<figure class="fig"><img src="/img/guide/phones.webp" width="1200" height="647" alt="The rig page with two phones connected and no roles yet: the step card lists Phone A and Phone B as not assigned">
+<figcaption>Two phones connected, no roles yet. The card says exactly what's missing.</figcaption></figure>
+
+<h2 id="calibrate">Calibrate</h2>
+<p>Hold the castle where her chest will be, in view of both phones, and press <b>Take snapshot</b>. Then move it somewhere new and take another: about six to eight in all, at different heights, distances and angles.</p>
+<figure class="fig"><img src="/img/guide/cal-first.webp" width="1200" height="574" alt="Both live views show the castle with its frame drawn over it, labelled castle tracked, and a yellow dashed box marked next: here">
+<figcaption>Both phones see the castle. Its frame is drawn over the picture where the phone thinks it is, and the label says "castle tracked". The yellow box shows where to hold it.</figcaption></figure>
+<p>What the live views show while you calibrate:</p>
+<ul>
+<li><b>Coloured outlines</b> on every marker a phone can read.</li>
+<li><b>The castle's frame</b>, hub to each arm, once the phone has worked out exactly where the castle is. The label turns green: "castle tracked". If it says "partly in view", part of the castle is off the edge of the picture; that still works.</li>
+<li><b>A 3 × 3 grid.</b> Green squares are where the castle has already been; the yellow <b>"next: here"</b> box is the emptiest part of the picture. Aim for the box in both views at once, as near as you can.</li>
+</ul>
+<figure class="fig"><img src="/img/guide/cal-progress.webp" width="1200" height="624" alt="After three snapshots: possible error 2.2 millimetres, advice to put the castle in other parts of each picture, and Take snapshot and Good enough buttons">
+<figcaption>After three snapshots. The number is how far apart the two phones could disagree at her body; under 2 mm is good. "Good enough, continue" appears once it's usable.</figcaption></figure>
+<p>When the error is under 2 mm with at least four snapshots, the step turns green and the page moves on. From then on, <b>don't touch the phones or their stands</b> until you're done scanning. If one gets bumped, the page notices (see <a href="#messages">Messages</a>).</p>
+
+<h2 id="empty">Record the empty room</h2>
+<p>Clear the turntable and both pictures: nobody standing behind, no pets. Lights as they'll be for the scan. Press <b>Record empty room</b>; it takes three seconds and stops by itself.</p>
+<figure class="fig"><img src="/img/guide/empty.webp" width="1200" height="568" alt="The empty-room step: both views show the empty room with a blue vertical line where the turntable centre is">
+<figcaption>The blue line in each view is where the phones are aimed: the middle of the turntable, where she should stand.</figcaption></figure>
+<p>This is the background her outline is cut against. Skipping it still works, but measurements come out about 3–4 mm worse around the body.</p>
+
+<h2 id="subject">Get her ready</h2>
+<p>The card has a short checklist (hair tied up, close-fitting clothes, arms a hand's width from her sides) and the words to say as she steps on.</p>
+<figure class="fig"><img src="/img/guide/subject.webp" width="1200" height="705" alt="The subject step: both views show the person on the turntable; the card shows what to say and a checklist, with a She's ready button">
+<figcaption>She's on the turntable, facing phone A. Press <b>She's ready</b> when she is.</figcaption></figure>
+
+<h2 id="scan">Scan</h2>
+<p>Press <b>Start scan</b>. Both phones start together after a short countdown. Turn the turntable slowly and steadily, twice, about 30 to 60 seconds a turn, and press <b>Stop</b> (or the space bar) when she faces phone A again.</p>
+<figure class="fig"><img src="/img/guide/scanning.webp" width="1200" height="569" alt="Scanning: both views marked REC, a timer, a progress bar for two turns and a red Stop button">
+<figcaption>While recording: a timer, a guide for the two turns, and Stop. The phones' frame counts show in the views.</figcaption></figure>
+<p>Then the phones send their recordings to the Mac. She can relax; this takes a few seconds to a minute on good Wi-Fi.</p>
+<figure class="fig"><img src="/img/guide/receiving.webp" width="1200" height="548" alt="Receiving the scan: per-phone sending progress">
+<figcaption>Receiving: each phone's progress. If a phone was closed by mistake, <b>Discard this take</b> and scan again.</figcaption></figure>
+
+<h2 id="finish">Arms up and finish</h2>
+<p>An optional second take with her arms raised comes next; skip it if you don't need it. Then <b>Finish</b>: the card tells her she can step off, and <b>Process scan</b> sends everything to Studio.</p>
+<div class="duo">
+<figure class="fig" style="margin:0"><img src="/img/guide/arms-up.webp" width="1200" height="568" alt="The optional arms-up step with Start and Skip buttons"><figcaption>Optional: arms raised.</figcaption></figure>
+<figure class="fig" style="margin:0"><img src="/img/guide/finish.webp" width="1200" height="568" alt="The finish step with a Process scan button"><figcaption>Finish: process the session.</figcaption></figure>
+</div>
+
+<h2 id="check">Check the result</h2>
+<p>Processing takes a few minutes. Studio opens on <b>Scan check</b>: a verdict at the top, then one line per thing that was checked, each green, amber or red with a number. It tells you while she's still there whether the scan is good, so you can scan again on the spot.</p>
+<figure class="fig"><img src="/img/guide/studio-check.webp" width="1200" height="750" alt="Studio's Scan check tab: the fused LiDAR points and the reconstructed surface side by side, with a verdict and a list of checks">
+<figcaption>Scan check. Here the verdict is "usable, with warnings": phone A cut off part of her at the edge of its picture, and the line says how to fix that for next time.</figcaption></figure>
+<p><b>Outline diagnostics</b> shows how the outlines from each phone went, frame by frame: moments when something walked behind her, where the fit is loose, and the measurements from the outlines alone.</p>
+<p>The next tabs turn the scan into a form:</p>
+<ul>
+<li><b>Shape</b>: the surface in its body frame, and a symmetric version if you want one.</li>
+<li><b>Cuts</b>: where the form starts and ends. Drag the shoulder handles, or set the neck, shoulders, arm pieces and hem with the controls. The form updates a moment later.</li>
+<li><b>Print plan</b>: the form cut into pieces for your printer, each with its core and shell, and how much support it needs.</li>
+<li><b>Export</b>: a Bambu Studio project, the STL files, or a complete archive of the visit.</li>
+</ul>
+<div class="duo">
+<figure class="fig" style="margin:0"><img src="/img/guide/studio-cuts.webp" width="1200" height="750" alt="The Cuts tab: the trimmed form with orange shoulder handles and controls for the neck and shoulders"><figcaption>Cuts: neck, shoulders and arms.</figcaption></figure>
+<figure class="fig" style="margin:0"><img src="/img/guide/studio-print.webp" width="1200" height="750" alt="The Print plan tab: the form split into coloured pieces on a rod, with a table of print jobs"><figcaption>Print plan: pieces, sizes and support.</figcaption></figure>
+</div>
+
+<h2 id="messages">Messages</h2>
+<p>Problems appear in a <b>Needs attention</b> box under the step card, each with what to do. The ones you're most likely to see:</p>
+<div class="tablewrap"><table class="parts">
+<tr><th>Message</th><th>What to do</th></tr>
+<tr><td>Phone A is offline.</td><td>Unlock it, open Doppelmaker, Settings › Rig mode. Both phones must be on the same Wi-Fi as the Mac.</td></tr>
+<tr><td>Phone B is hot.</td><td>Take it out of its case, keep it on its charger, and give it a few minutes. Hot phones slow down and can stop recording.</td></tr>
+<tr><td>Phone A is at 15%.</td><td>Plug it in. LiDAR recording drains the battery quickly.</td></tr>
+<tr><td>Phone B has 2.1 GB free.</td><td>A scan needs about a gigabyte. Free some space on the phone.</td></tr>
+<tr><td>Both phones need to track the castle.</td><td>Move the castle so both views show "castle tracked", or "partly in view".</td></tr>
+<tr><td>Snapshot s04 disagrees with the others.</td><td>The castle probably moved while that snapshot was taken. Open Calibration details and press Drop next to it.</td></tr>
+<tr><td>No empty-room recording.</td><td>Record it before she steps on: it's worth 3–4 mm around the body.</td></tr>
+<tr><td>A phone is taking a long time to send its recording.</td><td>Keep Doppelmaker open on both phones; the Wi-Fi may be slow. Discard the take only if a phone was closed.</td></tr>
+<tr><td>Recalibrate: phone A moved.</td><td>Its picture shifted against the room since calibration. Tighten its stand, press Reset calibration, and take new snapshots.</td></tr>
+</table></div>
+<figure class="fig"><img src="/img/guide/moved.webp" width="1200" height="526" alt="Phone A's view labelled phone moved; the card says Recalibrate: phone A moved, with a Reset calibration button">
+<figcaption>A bumped phone. The page goes back to calibration by itself, unless a scan is recording.</figcaption></figure>
+</article>
+</main>
+<footer class="foot"><div class="wrap">
+<span>&copy; 2026 Greg Link. Doppelmaker is an independent project.</span>
+<a href="/support.html">Support</a>
+<a href="/privacy.html">Privacy</a>
+</div></footer>
+</body>
+</html>

@@ -17,6 +17,9 @@ PAGES = {
     "how-it-works.html": ("How it works · Doppelmaker",
                           "How Doppelmaker turns camera, LiDAR and motion data into a printable body double, explained without the maths.",
                           "how", ""),
+    "guide.html": ("A scan, start to finish · Doppelmaker",
+                   "A walkthrough of a Doppelmaker session in Studio: what you see, what to do and what the messages mean.",
+                   "guide", ""),
     "rig.html": ("The rig · Doppelmaker",
                  "The capture setup: two iPhones, a turntable and a few printed parts, and what makes a good scan.",
                  "rig", ""),
@@ -25,7 +28,8 @@ PAGES = {
     "404.html": ("Not found · Doppelmaker", "Page not found.", "", ""),
 }
 
-NAV = [("how", "/how-it-works.html", "How it works"), ("rig", "/rig.html", "The rig"), ("support", "/support.html", "Support")]
+NAV = [("how", "/how-it-works.html", "How it works"), ("rig", "/rig.html", "The rig"), ("guide", "/guide.html", "Guide"),
+       ("support", "/support.html", "Support")]
 
 HEAD = """<!doctype html>
 <html lang="en">

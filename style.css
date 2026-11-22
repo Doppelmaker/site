@@ -170,3 +170,8 @@ svg.diagram .lbl { font-weight: 600; fill: var(--ink); }
 .foot { border-top: 1px solid var(--rule); margin-top: 88px; color: var(--ink-2); font-size: 14.5px; }
 .foot .wrap { display: flex; gap: 22px; flex-wrap: wrap; padding-top: 22px; padding-bottom: 36px; }
 .foot .wrap span { margin-right: auto; }
+
+/* guide: screenshots use the full column, text keeps its measure */
+.prose.shots { max-width: 920px; }
+.prose.shots > p, .prose.shots > ul, .prose.shots > ol, .prose.shots > h2, .prose.shots > h3 { max-width: 70ch; }
+.prose.shots .fig img { max-height: none; width: 100%; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,.14); }
