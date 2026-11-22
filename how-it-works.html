@@ -86,7 +86,7 @@
   <rect x="545" y="127" width="14" height="26" rx="3" fill="#17221e"/><text class="lbl" x="506" y="176">camera B</text>
   <text x="10" y="290">Each dashed line touches the body at one</text><text x="10" y="308">point (dots) and never goes inside it.</text>
 </svg>
-<figcaption>Seen from above. Each camera's outline gives lines that just touch the body. With two cameras at right angles, the lines fence it in on four sides; as the subject turns, many more.</figcaption>
+<figcaption>Seen from above. Each camera's outline gives lines that just touch the body. With two cameras at right angles, the lines fence it in on four sides; as they turn, many more.</figcaption>
 </figure>
 <p>So Doppelmaker uses each sensor for what it's good at:</p>
 <ul>
@@ -116,11 +116,11 @@
 </svg>
 <figcaption>Each phone is unsure along its own line of sight (long ellipses). At right angles, the uncertainties cross, and only the small middle is left.</figcaption>
 </figure>
-<p>Right angles help with motion too. If they sway forward and back, phone A sees that as a small change in distance, which is hard to measure. Phone B sees the same sway as their outline sliding sideways across its picture, which is easy. Phone B is also mounted higher, looking down, so it sees the tops of the shoulders that phone A, at navel height, can't.</p>
+<p>Right angles help with motion too. If the subject sways forward and back, phone A sees that as a small change in distance, which is hard to measure. Phone B sees the same sway as their outline sliding sideways across its picture, which is easy. Phone B is also mounted higher, looking down, so it sees the tops of the shoulders that phone A, at navel height, can't.</p>
 
 <h2 id="turntable">Why a turntable</h2>
 <p>The usual way to scan a person is to walk around them with a phone. That has two problems. The phone has to work out where it is as it moves, and small errors in that add up over a minute, so the far side of the body ends up a few millimetres off from the near side. And the person sways while the camera is behind them, with nothing to notice it.</p>
-<p>Doppelmaker turns it around: the phones stay fixed and the person turns on a turntable. The phones' positions are measured once, very precisely, with a printed calibration target, and never change. Since the room is still and the phones don't move, any change in what they see is her. Doppelmaker follows their slow turn and their small movements and undoes them, frame by frame, before combining anything.</p>
+<p>Doppelmaker turns it around: the phones stay fixed and the person turns on a turntable. The phones' positions are measured once, very precisely, with a printed calibration target, and never change. Since the room is still and the phones don't move, any change in what they see is the subject. Doppelmaker follows their slow turn and their small movements and undoes them, frame by frame, before combining anything.</p>
 <p><a href="/rig.html">The rig page</a> describes the setup.</p>
 
 <h2 id="motion">Blur, sway and breathing</h2>
@@ -129,7 +129,7 @@
 <p>For an outline, blur matters because the edge stops being a sharp step and becomes a ramp, so where exactly is the edge? Doppelmaker puts it halfway up the ramp, which is right for a symmetric smear, but the wider the ramp, the less certain that is.</p>
 <p>Some numbers. A turntable doing one turn in 40 seconds moves the side of a waist (15 cm from the centre) at about 2.4 cm per second. In a 1/100 s exposure that is 0.24 mm of smear: far below one pixel. A phone swung around someone by hand easily moves its view at half a metre per second at the body, which is 5 mm of smear in the same exposure. A slow turntable and fixed phones are much kinder to edges. The phones also lock their exposure during a scan, so brightness doesn't change from frame to frame.</p>
 <h3>Sway</h3>
-<p>Nobody stands perfectly still. Doppelmaker cuts the recording into short slices of time and, for each slice, works out exactly how they was standing: how far they had turned, and how they had leaned. It does this with a method called <b>ICP</b> (iterative closest point): take the LiDAR points from this moment, pair each one with the nearest point on the shape built so far, find the small turn and shift that best lines up the pairs, and repeat until nothing moves. Once every slice is lined up, everything is combined as if she had stood perfectly still.</p>
+<p>Nobody stands perfectly still. Doppelmaker cuts the recording into short slices of time and, for each slice, works out exactly how they were standing: how far they had turned, and how they had leaned. It does this with a method called <b>ICP</b> (iterative closest point): take the LiDAR points from this moment, pair each one with the nearest point on the shape built so far, find the small turn and shift that best lines up the pairs, and repeat until nothing moves. Once every slice is lined up, everything is combined as if they had stood perfectly still.</p>
 <h3>Breathing</h3>
 <p>Breathing changes the chest's girth by a centimetre or more. That can't be lined up away: the shape itself changes. Doppelmaker measures how much the chest moved during the scan, averages over the breaths, and warns if the breathing was deep enough to matter. For the scan itself, gentle, even breathing is best.</p>
 
@@ -137,7 +137,7 @@
 <ol>
 <li><b>Calibrate.</b> A printed target covered in square markers (like QR codes, but simpler) stands on the turntable. Each marker's corners are at known places on the target. From where those corners appear in a picture, the phone's position follows, like working out where you are standing from the corners of a building you know. Several snapshots from different angles are adjusted together until they all agree.</li>
 <li><b>Learn the empty room.</b> A few seconds of recording with nobody there gives each pixel's usual colour, and how much it flickers (a TV or a window flickers a lot).</li>
-<li><b>Track.</b> During the scan, ICP (above) follows the subject turn and sway, slice by slice.</li>
+<li><b>Track.</b> During the scan, ICP (above) follows them turn and sway, slice by slice.</li>
 <li><b>Fuse the depth.</b> Space is chopped into small cubes, 4 mm on a side. Every LiDAR measurement votes on how far each nearby cube is from the surface; each cube keeps the running average. The surface is wherever that average crosses zero. Thousands of noisy votes average into a smooth surface.</li>
 <li><b>Trace the outlines.</b> In every frame, their pixels are the ones that differ from the empty room, are near the LiDAR shape, and aren't far behind them (the LiDAR says how far away everything is). Their edge is found to a fraction of a pixel.</li>
 <li><b>Refine.</b> The surface is adjusted to agree with everything at once: the outlines from both phones, the LiDAR, and each phone's LiDAR bias. It's one large least-squares problem, the same idea as fitting a line through scattered points, with millions of points and a few thousand unknowns. Measurements that disagree with all the others (a hand that moved, a cat that walked through) get less and less say until they're ignored.</li>
@@ -146,7 +146,7 @@
 </ol>
 
 <h2 id="checks">Knowing it worked</h2>
-<p>Every step reports checks: how far the phones' views agree, how much they moved, how much of the surface was guessed rather than seen. If something is off, Studio says what and where, so you can scan again while she's still there.</p>
+<p>Every step reports checks: how far the phones' views agree, how much they moved, how much of the surface was guessed rather than seen. If something is off, Studio says what and where, so you can scan again while they're still there.</p>
 <p>Before any of this touches a real person, it runs on a <b>digital twin</b>: a simulated person with a known shape, scanned by simulated phones with realistic noise, biases, sway and even passers-by. Because the true shape is known, every number can be checked. The images on this site come from that twin.</p>
 <p>For the real world, there is a printed <b>test target</b> whose exact shape is known. Scanning it measures the whole chain end to end, from the phones' lenses to the printed parts.</p>
 </article>
