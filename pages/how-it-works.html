@@ -1,0 +1,131 @@
+<section class="pagehead"><div class="wrap">
+<h1>How it works</h1>
+<p>What the phones measure, why it takes two of them and a turntable, and how a few thousand noisy measurements become a form you can print. No matrices required.</p>
+</div></section>
+
+<main class="wrap article">
+<nav class="toc" aria-label="On this page"><ol>
+<li><a href="#problem">The problem</a></li>
+<li><a href="#sensors">What a phone can sense</a></li>
+<li><a href="#lidar">LiDAR, and why a Pro</a></li>
+<li><a href="#fusion">Why combine camera and LiDAR</a></li>
+<li><a href="#views">Why two views at right angles</a></li>
+<li><a href="#turntable">Why a turntable</a></li>
+<li><a href="#motion">Blur, sway and breathing</a></li>
+<li><a href="#pipeline">The pipeline, step by step</a></li>
+<li><a href="#checks">Knowing it worked</a></li>
+</ol></nav>
+
+<article class="prose">
+<h2 id="problem">The problem</h2>
+<p>A dress form is useful only if a tape measure gives the same numbers on the form as on the person. Sewists work to a few millimetres: a waist 15 mm too big is a different size of garment. So the goal isn't a 3D model that looks right. It's one that <em>measures</em> right.</p>
+<p>That is harder than it sounds, for three reasons:</p>
+<ul>
+<li><b>Cameras record light, not distance.</b> Every photo flattens the world onto a plane, and the distance information has to be recovered.</li>
+<li><b>Sensors are imperfect.</b> Every measurement has noise (random scatter) and bias (a consistent lean in one direction). Averaging removes noise but not bias.</li>
+<li><b>People move.</b> Even someone trying to stand still sways a centimetre or more and breathes. A scan takes a minute; the body isn't the same shape for that whole minute.</li>
+</ul>
+<p>Most of what Doppelmaker does is about those three problems.</p>
+
+<h2 id="sensors">What a phone can sense</h2>
+<p>A Pro iPhone carries three kinds of sensors that matter here:</p>
+<ul>
+<li><b>The camera</b> records colour images, about 1920 × 1440 pixels, many times a second. Lots of detail, but no direct measure of distance.</li>
+<li><b>The LiDAR scanner</b> measures distance directly, as a small depth image of 256 × 192 points, 60 times a second.</li>
+<li><b>Motion sensors and ARKit.</b> An accelerometer and gyroscope, combined by Apple's ARKit with the camera, tell the phone where it is and which way is down. In our rig the phones don't move, so this mostly gives us gravity, and a warning if a phone gets bumped.</li>
+</ul>
+<p>Each is good at something the others are bad at. The rest of this page is about playing them off against each other.</p>
+
+<h2 id="lidar">LiDAR, and why a Pro</h2>
+<p>LiDAR works like a bat's sonar with light. The phone sends out pulses of invisible infrared light and times how long the reflection takes to come back. Light travels about 30 cm per nanosecond, so the timing directly gives distance, in real units, with no guessing.</p>
+<p>That last part is the key. From photos alone, a computer can work out a shape but not its size: a large thing far away and a small thing close up look the same. Photo-only methods (photogrammetry) need many sharp images of a surface with lots of texture to match between them. Skin and plain fabric have very little texture, and people don't hold still for the hundreds of photos it would take. LiDAR gives us true scale and a complete rough shape in every frame, from the first second.</p>
+<p>Only the Pro iPhones (12 Pro and later) have LiDAR, which is why <b>Doppelmaker Scanner requires an iPhone Pro</b>. Without it, there is no depth to start from.</p>
+<p>LiDAR has three weaknesses, and the rest of the pipeline is designed around them:</p>
+<ul>
+<li><b>Low resolution.</b> 256 × 192 points is about 50,000 measurements per frame, against nearly 3 million pixels in a camera image.</li>
+<li><b>Blurry edges.</b> At the edge of the body, a single LiDAR point straddles the person and the wall behind, and gets a distance somewhere in between ("flying pixels").</li>
+<li><b>Small biases.</b> Infrared light goes slightly into skin before it reflects, so skin can read a millimetre or two further away than it is, and each phone's distance scale can be off by a fraction of a percent. Averaging a thousand frames doesn't fix that: it's the same error every time.</li>
+</ul>
+
+<h2 id="fusion">Why combine camera and LiDAR</h2>
+<p>The camera is LiDAR's opposite: sharp but flat. In a camera image, the edge of the body is crisp. At a metre away, one pixel covers about a millimetre, so the camera knows exactly where her outline is, <em>sideways</em>. What it can't say is how far away that edge is.</p>
+<p>An outline still says something precise about the 3D shape. Think of the line from the camera through one point of her outline, out into the room. That line just grazes her body: it touches her somewhere along its length and never goes inside. Every outline point gives one of these tangent lines, and together they fence the body in from that camera's direction.</p>
+<figure class="fig">
+<svg class="diagram" viewBox="0 0 580 320" role="img" aria-label="Top-down view: a cross-section of the body as a rounded shape. From camera A below it, two lines just touch its left and right sides; from camera B to its right, two lines just touch its front and back. The four lines fence the body in.">
+  <ellipse cx="300" cy="140" rx="86" ry="58" fill="var(--form)" stroke="#1f4d45" stroke-width="2"/>
+  <text class="lbl" x="282" y="145">body</text>
+  <line x1="300" y1="292" x2="439" y2="65" stroke="#3a64a8" stroke-width="2" stroke-dasharray="6 5"/>
+  <line x1="300" y1="292" x2="161" y2="65" stroke="#3a64a8" stroke-width="2" stroke-dasharray="6 5"/>
+  <line x1="545" y1="140" x2="158" y2="238" stroke="#c9a10f" stroke-width="2.5" stroke-dasharray="6 5"/>
+  <line x1="545" y1="140" x2="158" y2="42" stroke="#c9a10f" stroke-width="2.5" stroke-dasharray="6 5"/>
+  <circle cx="379.5" cy="162.1" r="4.5" fill="#3a64a8"/><circle cx="220.5" cy="162.1" r="4.5" fill="#3a64a8"/>
+  <circle cx="330.2" cy="194.3" r="4.5" fill="#c9a10f"/><circle cx="330.2" cy="85.7" r="4.5" fill="#c9a10f"/>
+  <rect x="287" y="292" width="26" height="14" rx="3" fill="#17221e"/><text class="lbl" x="322" y="304">camera A</text>
+  <rect x="545" y="127" width="14" height="26" rx="3" fill="#17221e"/><text class="lbl" x="506" y="176">camera B</text>
+  <text x="10" y="290">Each dashed line touches the body at one</text><text x="10" y="308">point (dots) and never goes inside it.</text>
+</svg>
+<figcaption>Seen from above. Each camera's outline gives lines that just touch the body. With two cameras at right angles, the lines fence it in on four sides; as she turns, many more.</figcaption>
+</figure>
+<p>So Doppelmaker uses each sensor for what it's good at:</p>
+<ul>
+<li><b>LiDAR</b> provides the whole surface, with true scale, everywhere: including concave places like under the bust or the small of the back, which never show up on an outline.</li>
+<li><b>The outlines</b> pin the surface exactly where they touch it. Wherever the LiDAR surface pokes out past an outline, or falls short of it, the outline wins.</li>
+<li><b>And the two check each other.</b> Where they overlap, the difference between them shows each phone's LiDAR bias. Doppelmaker estimates that bias and removes it everywhere, including in the concave places the outlines can't see.</li>
+</ul>
+<figure class="fig"><img src="/img/shots/outline.webp" width="540" height="720" alt="A camera frame of the simulated subject with her outline in green and the search band in red" style="max-height:320px">
+<figcaption>One frame from a phone (simulated). Green: the outline Doppelmaker traced, to a fraction of a pixel. Red: the band where it was allowed to look, worked out from the LiDAR shape, so a person or pet walking past behind her can't be mistaken for her edge.</figcaption></figure>
+<div class="aside"><p>In our simulations, with LiDAR biases of the size real phones have, LiDAR alone measured the bust, underbust and waist 11 to 13 mm short. Adding the outlines brought all three within 2 mm.</p></div>
+
+<h2 id="views">Why two views at right angles</h2>
+<p>A single camera measures well across its picture and poorly along its line of sight. Move something sideways and it moves in the picture; move it toward the camera and it barely changes. LiDAR has the opposite problem: it measures distance along its line of sight well and blurs things sideways.</p>
+<p>Put two phones at right angles, and each one's weak direction is the other's strong direction. Phone A, in front, sees her outline from the front; phone B, at her side, sees it from the side. A point on her body that phone A can only place to within a long, thin region is placed by phone B in the crossing direction. The overlap is small.</p>
+<figure class="fig">
+<svg class="diagram" viewBox="0 0 560 250" role="img" aria-label="Top-down view: phone A below a point, phone B to its right. Each phone's uncertainty about the point is a long thin ellipse along its line of sight. The two ellipses cross at right angles and overlap in a small region.">
+  <rect x="267" y="222" width="26" height="14" rx="3" fill="#17221e"/><text class="lbl" x="300" y="234">phone A</text>
+  <rect x="508" y="98" width="14" height="26" rx="3" fill="#17221e"/><text class="lbl" x="470" y="146">phone B</text>
+  <line x1="280" y1="222" x2="280" y2="40" stroke="var(--rule)" stroke-width="1.5"/>
+  <line x1="508" y1="111" x2="120" y2="111" stroke="var(--rule)" stroke-width="1.5"/>
+  <ellipse cx="280" cy="111" rx="12" ry="70" fill="rgba(58,100,168,.18)" stroke="#3a64a8" stroke-width="2"/>
+  <ellipse cx="280" cy="111" rx="70" ry="12" fill="rgba(240,196,25,.25)" stroke="#c9a10f" stroke-width="2"/>
+  <circle cx="280" cy="111" r="4" fill="#17221e"/>
+  <text x="300" y="38">what phone A can't pin down</text>
+  <text x="60" y="140">what phone B</text><text x="60" y="156">can't pin down</text>
+  <text x="300" y="168">where both agree: small</text>
+</svg>
+<figcaption>Each phone is unsure along its own line of sight (long ellipses). At right angles, the uncertainties cross, and only the small middle is left.</figcaption>
+</figure>
+<p>Right angles help with motion too. If she sways forward and back, phone A sees that as a small change in distance, which is hard to measure. Phone B sees the same sway as her outline sliding sideways across its picture, which is easy. Phone B is also mounted higher, looking down, so it sees the tops of the shoulders that phone A, at navel height, can't.</p>
+
+<h2 id="turntable">Why a turntable</h2>
+<p>The usual way to scan a person is to walk around them with a phone. That has two problems. The phone has to work out where it is as it moves, and small errors in that add up over a minute, so the far side of the body ends up a few millimetres off from the near side. And the person sways while the camera is behind them, with nothing to notice it.</p>
+<p>Doppelmaker turns it around: the phones stay fixed and the person turns on a turntable. The phones' positions are measured once, very precisely, with a printed calibration target, and never change. Since the room is still and the phones don't move, any change in what they see is her. Doppelmaker follows her slow turn and her small movements and undoes them, frame by frame, before combining anything.</p>
+<p><a href="/rig.html">The rig page</a> describes the setup.</p>
+
+<h2 id="motion">Blur, sway and breathing</h2>
+<h3>Motion blur</h3>
+<p>A camera doesn't take a picture in an instant. The shutter is open for a short exposure, maybe a hundredth of a second indoors, and anything that moves during it is smeared across the pixels it moved over. The smear is simply speed × exposure time.</p>
+<p>For an outline, blur matters because the edge stops being a sharp step and becomes a ramp, so where exactly is the edge? Doppelmaker puts it halfway up the ramp, which is right for a symmetric smear, but the wider the ramp, the less certain that is.</p>
+<p>Some numbers. A turntable doing one turn in 40 seconds moves the side of a waist (15 cm from the centre) at about 2.4 cm per second. In a 1/100 s exposure that is 0.24 mm of smear: far below one pixel. A phone swung around someone by hand easily moves its view at half a metre per second at the body, which is 5 mm of smear in the same exposure. A slow turntable and fixed phones are much kinder to edges. The phones also lock their exposure during a scan, so brightness doesn't change from frame to frame.</p>
+<h3>Sway</h3>
+<p>Nobody stands perfectly still. Doppelmaker cuts the recording into short slices of time and, for each slice, works out exactly how she was standing: how far she had turned, and how she had leaned. It does this with a method called <b>ICP</b> (iterative closest point): take the LiDAR points from this moment, pair each one with the nearest point on the shape built so far, find the small turn and shift that best lines up the pairs, and repeat until nothing moves. Once every slice is lined up, everything is combined as if she had stood perfectly still.</p>
+<h3>Breathing</h3>
+<p>Breathing changes the chest's girth by a centimetre or more. That can't be lined up away: the shape itself changes. Doppelmaker measures how much the chest moved during the scan, averages over the breaths, and warns if the breathing was deep enough to matter. For the scan itself, gentle, even breathing is best.</p>
+
+<h2 id="pipeline">The pipeline, step by step</h2>
+<ol>
+<li><b>Calibrate.</b> A printed target covered in square markers (like QR codes, but simpler) stands on the turntable. Each marker's corners are at known places on the target. From where those corners appear in a picture, the phone's position follows, like working out where you are standing from the corners of a building you know. Several snapshots from different angles are adjusted together until they all agree.</li>
+<li><b>Learn the empty room.</b> A few seconds of recording with nobody there gives each pixel's usual colour, and how much it flickers (a TV or a window flickers a lot).</li>
+<li><b>Track.</b> During the scan, ICP (above) follows her turn and sway, slice by slice.</li>
+<li><b>Fuse the depth.</b> Space is chopped into small cubes, 4 mm on a side. Every LiDAR measurement votes on how far each nearby cube is from the surface; each cube keeps the running average. The surface is wherever that average crosses zero. Thousands of noisy votes average into a smooth surface.</li>
+<li><b>Trace the outlines.</b> In every frame, her pixels are the ones that differ from the empty room, are near the LiDAR shape, and aren't far behind her (the LiDAR says how far away everything is). Her edge is found to a fraction of a pixel.</li>
+<li><b>Refine.</b> The surface is adjusted to agree with everything at once: the outlines from both phones, the LiDAR, and each phone's LiDAR bias. It's one large least-squares problem, the same idea as fitting a line through scattered points, with millions of points and a few thousand unknowns. Measurements that disagree with all the others (a hand that moved, a cat that walked through) get less and less say until they're ignored.</li>
+<li><b>Find landmarks and measure.</b> The surface is sliced like a loaf at every few millimetres. Bust, underbust, waist and hip are found from how those slices change. Girths are measured the way a tape does: around the outside, bridging hollows.</li>
+<li><b>Build the form.</b> A rigid core is grown inside the surface at a fixed depth, so pins always go into soft shell and never hit plastic. The form is cut into pieces by trying every reasonable set of cut heights and keeping the one with the fewest overhangs that fits the printer. Keys, a centre rod channel and a stand seat are added.</li>
+</ol>
+
+<h2 id="checks">Knowing it worked</h2>
+<p>Every step reports checks: how far the phones' views agree, how much she moved, how much of the surface was guessed rather than seen. If something is off, Studio says what and where, so you can scan again while she's still there.</p>
+<p>Before any of this touches a real person, it runs on a <b>digital twin</b>: a simulated person with a known shape, scanned by simulated phones with realistic noise, biases, sway and even passers-by. Because the true shape is known, every number can be checked. The images on this site come from that twin.</p>
+<p>For the real world, there is a printed <b>test target</b> whose exact shape is known. Scanning it measures the whole chain end to end, from the phones' lenses to the printed parts.</p>
+</article>
+</main>

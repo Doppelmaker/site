@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The rig · Doppelmaker</title>
+<meta name="description" content="The capture setup: two iPhones, a turntable and a few printed parts, and what makes a good scan.">
+<meta property="og:title" content="The rig · Doppelmaker">
+<meta property="og:description" content="The capture setup: two iPhones, a turntable and a few printed parts, and what makes a good scan.">
+<meta property="og:image" content="https://doppelmaker.app/img/og.png">
+<meta name="theme-color" content="#1f4d45">
+<link rel="icon" href="/img/favicon-64.png" type="image/png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" href="/fonts/young-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css">
+
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="brand" href="/"><img src="/img/favicon-64.png" alt="" width="32" height="32">Doppelmaker</a>
+<nav aria-label="Main"><a href="/how-it-works.html">How it works</a><a href="/rig.html" aria-current="page">The rig</a><a href="/support.html">Support</a></nav>
+</div></header>
+<section class="pagehead"><div class="wrap">
+<h1>The rig</h1>
+<p>Two iPhones on stands, a turntable, and a few printed parts. What it is, why it's built this way, and how to get a good scan out of it.</p>
+</div></section>
+
+<main class="wrap article">
+<nav class="toc" aria-label="On this page"><ol>
+<li><a href="#why">Why a rig</a></li>
+<li><a href="#layout">Layout</a></li>
+<li><a href="#session">A session</a></li>
+<li><a href="#good">What makes a good scan</a></li>
+<li><a href="#parts">Printed parts</a></li>
+<li><a href="#buy">Hardware to buy</a></li>
+</ol></nav>
+
+<article class="prose">
+<h2 id="why">Why a rig</h2>
+<p>Walking around someone with a phone is the quick way to scan a person, and fine for a rough avatar. It isn't good enough for a dress form. The hand-held phone slowly loses track of exactly where it is, and the person sways while the phone is behind them with nothing to notice. Both errors end up in the shape.</p>
+<p>The rig fixes both. The phones don't move, so their positions are measured once and stay exact. The person turns slowly on a turntable, so every side is seen, and two phones watching from different directions catch every lean and breath so Doppelmaker can take them out. <a href="/how-it-works.html#turntable">How it works</a> explains the reasoning in more depth.</p>
+
+<h2 id="layout">Layout</h2>
+<figure class="fig">
+<svg class="diagram" viewBox="0 0 560 330" role="img" aria-label="Top-down view of the rig: a turntable in the middle, phone A about a metre in front of it, phone B about a metre to its side, at right angles, both pointing at the turntable centre.">
+  <circle cx="280" cy="150" r="60" fill="#1f4d45"/>
+  <ellipse cx="280" cy="150" rx="34" ry="22" fill="var(--form)" stroke="#153832" stroke-width="2"/>
+  <path d="M232 106 a66 66 0 0 1 96 0" fill="none" stroke="#f0c419" stroke-width="3" marker-end="url(#ah2)"/>
+  <defs><marker id="ah2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0c419"/></marker></defs>
+  <text class="lbl" x="250" y="66">turntable</text>
+  <rect x="268" y="282" width="24" height="14" rx="3" fill="#17221e"/>
+  <text class="lbl" x="300" y="294">phone A</text><text x="300" y="311">in front, at navel height</text>
+  <line x1="280" y1="282" x2="280" y2="214" stroke="#3a64a8" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="288" y="252">about 1 m</text>
+  <rect x="452" y="138" width="14" height="24" rx="3" fill="#17221e"/>
+  <text class="lbl" x="430" y="186">phone B</text><text x="400" y="203">at her side, above</text><text x="400" y="219">the shoulders</text>
+  <line x1="452" y1="150" x2="344" y2="150" stroke="#3a64a8" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="372" y="140">about 1 m</text>
+</svg>
+<figcaption>From above. The two phones are about a metre from the turntable centre and at right angles to each other.</figcaption>
+</figure>
+<ul>
+<li><b>Phone A</b> faces her front, lens at about navel height, tilted up 10°.</li>
+<li><b>Phone B</b> is at her side, 90° around from A, lens 15–25 cm above her shoulders and tilted down 12°, so it can see the tops of the shoulders.</li>
+<li>Both about a metre from the turntable centre (0.9–1.2 m), in portrait, with cases off, on right-angle USB-C chargers: LiDAR recording warms a phone.</li>
+<li>Exact heights and angles don't matter. The calibration target measures where each phone really is, at the start of every session.</li>
+</ul>
+
+<h2 id="session">A session</h2>
+<ol>
+<li><b>Calibrate.</b> Hold the calibration castle where both phones can see it. Studio shows both views live and takes a snapshot from both phones at once each time you click; move the castle between snapshots. About eight is enough, and Studio says when the phones are measured well.</li>
+<li><b>Record the empty rig.</b> Three seconds with nobody in either picture, lights and room as they'll be for the scan. This is the background the outlines are cut against, and it's worth several millimetres of accuracy.</li>
+<li><b>Scan.</b> She steps on, facing phone A, arms a hand's width from her sides. Turn slowly, twice: 30 to 60 seconds a turn. Both phones start together when you click; the recordings arrive on the Mac by themselves.</li>
+<li><b>Check.</b> Studio shows whether the scan is good before she steps off: how much she moved, how well the views agree, any part that wasn't seen.</li>
+</ol>
+
+<h2 id="good">What makes a good scan</h2>
+<h3>Clothing and hair</h3>
+<ul>
+<li><b>Close-fitting, matte, mid-tone</b> clothing, ideally what the garments will be fitted over. The form follows whatever she wears: loose fabric makes a loose form.</li>
+<li><b>Tie hair up</b> above the neck. Hair over the shoulders becomes part of the outline.</li>
+<li><b>Arms a hand's width out.</b> An arm against her side hides that side from both phones.</li>
+</ul>
+<h3>The room</h3>
+<ul>
+<li><b>Even light.</b> No strong window or lamp directly behind her in either phone's view.</li>
+<li><b>Contrast behind her.</b> A background that isn't the colour of her skin or clothing gives the sharpest outlines. A plain dark or saturated backdrop behind each phone's view is the simplest fix where Studio reports weak contrast.</li>
+<li><b>Leave the room alone</b> after the empty-rig recording: same lights, same doors. Re-record it if anything changes.</li>
+</ul>
+<h3>What doesn't matter</h3>
+<ul>
+<li>Shadows, clutter and anything more than a quarter of a metre behind her: the LiDAR rules it out by distance.</li>
+<li>People or pets moving a metre or more behind her. Doppelmaker notices them and ignores those frames' outlines where they cross.</li>
+<li>Markers: optional. Small printed stickers on bony places can help tracking a featureless shape, but on a person the result is the same without them.</li>
+</ul>
+<h3>The person</h3>
+<p>Stand naturally, weight on both feet, eyes on a fixed point. Breathe gently and evenly. A little sway is expected and removed; a deep breath or a shifted foot is noticed and reported.</p>
+
+<h2 id="parts">Printed parts</h2>
+<p>Studio generates every printed part of the rig, sized for the phones you use. Each comes as a print-ready STL, and the two-colour parts as a Bambu Studio project.</p>
+<figure class="fig"><img src="/img/shots/hardware.webp" width="895" height="409" alt="Rig hardware: a phone cradle, a sliding phone head, a collet, a threaded cap and a floor socket" style="max-height:260px">
+<figcaption>From left: phone cradle, phone head (slides on the mast and clamps anywhere), collet, cap, floor socket.</figcaption></figure>
+<div class="tablewrap"><table class="parts">
+<tr><th>Part</th><th>Qty</th><th>What it's for</th></tr>
+<tr><td>Floor socket</td><td>2</td><td>Holds each mast upright, screwed to a board.</td></tr>
+<tr><td>Collet and cap</td><td>4 each</td><td>A threaded clamp that grips the mast: one at each socket, one under each phone head.</td></tr>
+<tr><td>Phone head A and B</td><td>1 each</td><td>Slides on the mast and clamps at any height; A tilts up 10°, B down 12°.</td></tr>
+<tr><td>Phone cradle</td><td>1 per phone</td><td>Holds the phone (case off) and slides onto the head's dovetail. Made per iPhone model.</td></tr>
+<tr><td>Calibration castle</td><td>1</td><td>Two colours, 15 markers. Measures where the phones are at the start of every session.</td></tr>
+<tr><td>Test target</td><td>1, optional</td><td>A shape of exactly known size, scanned like a person to check the whole chain. Two sizes: for 330 mm and 256 mm print beds.</td></tr>
+<tr><td>Body marker sheets</td><td>optional</td><td>Printable sticker sheets (PDF) for tracking help.</td></tr>
+</table></div>
+<div class="duo">
+<figure class="fig" style="margin:0"><img src="/img/shots/castle.webp" width="861" height="1037" alt="The calibration castle: a white hub with arms ending in cubes, each face carrying a black square marker">
+<figcaption>Calibration castle: the markers' corners are at known places, so each phone can work out where it is from one look.</figcaption></figure>
+<figure class="fig" style="margin:0"><img src="/img/shots/target.webp" width="1000" height="967" alt="The test target: a white shape with a drum, a groove, two bumps and a marker band">
+<figcaption>Test target: a groove like an underbust, bumps like a bust, black and white areas, all of exactly known size.</figcaption></figure>
+</div>
+<p>Print in PETG or PLA. The castle and target print in two colours (white and black) on a multi-material printer, and their files already set finer layers where there are threads.</p>
+
+<h2 id="buy">Hardware to buy</h2>
+<ul>
+<li><b>Two masts</b>: 3/4-inch EMT electrical conduit, about 1.8 m each, cut with a tubing cutter.</li>
+<li><b>A board</b> joining the two floor sockets, for example 3/4-inch plywood 150 mm × 1.8 m, so the masts stay at right angles.</li>
+<li><b>Eight wood screws</b> (#10 × 3/4-inch flat-head) for the sockets.</li>
+<li><b>A turntable</b> rated for a person's weight, turned by hand or by motor, slowly and steadily.</li>
+<li><b>Two right-angle USB-C cables and chargers.</b></li>
+</ul>
+</article>
+</main>
+<footer class="foot"><div class="wrap">
+<span>&copy; 2026 Greg Link. Doppelmaker is an independent project.</span>
+<a href="/support.html">Support</a>
+<a href="/privacy.html">Privacy</a>
+</div></footer>
+</body>
+</html>

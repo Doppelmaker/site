@@ -8,7 +8,7 @@ export async function start(box) {
   const r = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   r.setPixelRatio(Math.min(2, devicePixelRatio)); r.setSize(W(), H());
   r.outputColorSpace = THREE.SRGBColorSpace; r.toneMapping = THREE.ACESFilmicToneMapping;
-  box.querySelector(".load")?.remove(); r.domElement.style.cssText = "position:absolute;inset:0;width:100%;height:100%"; box.prepend(r.domElement);
+  box.querySelector(".load")?.remove(); box.querySelector(":scope > img")?.remove(); r.domElement.style.cssText = "position:absolute;inset:0;width:100%;height:100%"; box.prepend(r.domElement);
   const scene = new THREE.Scene();
   scene.add(new THREE.HemisphereLight(0xffffff, 0x50605a, 1.4));
   const d = new THREE.DirectionalLight(0xffffff, 2.0); d.position.set(1, 2, 1.5); scene.add(d);

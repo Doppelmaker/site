@@ -1,0 +1,72 @@
+<section class="hero">
+<div class="wrap">
+<div>
+<span class="status">In development: TestFlight beta coming</span>
+<h1>Your body double, printed.</h1>
+<p class="lede">Scan someone with two iPhones. Print a dress form or wig head that measures like them, on your own 3D printer.</p>
+<div class="btns"><a class="btn go" href="/how-it-works.html">See how it works</a><a class="btn alt" href="#spin">Spin one in 3D</a></div>
+</div>
+<figure><img src="/img/shots/exploded.webp" width="1000" height="885" alt="A custom dress form pulled apart into its printed pieces: green soft shells over cream rigid cores"></figure>
+</div>
+<div class="tape" aria-hidden="true"><span style="left:100px">10</span><span style="left:200px">20</span><span style="left:300px">30</span><span style="left:400px">40</span><span style="left:500px">50</span><span style="left:600px">60</span><span style="left:700px">70</span><span style="left:800px">80</span><span style="left:900px">90</span><span style="left:1000px">100</span><span style="left:1100px">110</span><span style="left:1200px">120</span><span style="left:1300px">130</span><span style="left:1400px">140</span><span style="left:1500px">150</span><span style="left:1600px">160</span><span style="left:1700px">170</span><span style="left:1800px">180</span><span style="left:1900px">190</span><span style="left:2000px">200</span></div>
+</section>
+
+<main>
+<div class="wrap points">
+<div><div class="pic"><img src="/img/shots/body.webp" width="776" height="800" alt="A scanned torso with yellow tape rings at bust, underbust, waist and hip"></div>
+<div><h3>Measures like a tape</h3><p>Bust, waist and hip land within a couple of millimetres in our simulations: the shape is checked against what both cameras see, not guessed from one.</p></div></div>
+<div><div class="pic"><img src="/img/shots/plate.webp" width="800" height="637" alt="One piece of the form on a print bed"></div>
+<div><h3>Prints on your printer</h3><p>Studio cuts the form into pieces that fit your bed, turned to need almost no supports, and opens them in Bambu Studio.</p></div></div>
+<div><div class="pic"><img src="/img/icon-512.png" width="512" height="512" alt="The Doppelmaker app icon" style="border-radius:22%;max-height:130px"></div>
+<div><h3>Stays on your devices</h3><p>No accounts and no cloud. Scans go from the phone to your Mac over your own Wi-Fi, and nowhere else.</p></div></div>
+</div>
+
+<section class="wrap section">
+<h2>From scan to stand</h2>
+<p class="lead">About two minutes in front of the phones, a few minutes on the Mac, then the printer takes over.</p>
+<ol class="seq">
+<li><div class="thumb"><img src="/img/shots/outline.webp" width="540" height="720" alt="A phone's view of the subject with her outline traced in green"></div>
+<h3>Scan</h3><p>She turns slowly on a turntable while two phones record. Doppelmaker traces her outline in every frame.</p></li>
+<li><div class="thumb"><img src="/img/shots/body.webp" width="776" height="800" alt="The reconstructed torso"></div>
+<h3>Shape</h3><p>LiDAR depth and both outlines become one surface, with her sway and breathing taken out.</p></li>
+<li><div class="thumb"><img src="/img/shots/assembled.webp" width="1064" height="1173" alt="The finished form"></div>
+<h3>Design</h3><p>Choose the neckline, shoulders, arms and hem. Studio builds a rigid core inside a pinnable shell.</p></li>
+<li><div class="thumb"><img src="/img/shots/plate.webp" width="800" height="637" alt="A piece on the print bed"></div>
+<h3>Print</h3><p>Pieces fit your printer's bed and key together around a centre rod.</p></li>
+</ol>
+<p class="more"><a href="/how-it-works.html">How it works, in more depth</a></p>
+</section>
+
+<section class="wrap section" id="spin">
+<div class="spin">
+<div class="viewer" id="viewer"><img src="/img/shots/assembled.webp" width="1064" height="1173" alt="The assembled dress form"><button class="load" id="load3d">Open in 3D (2 MB)</button><button id="explode" hidden>Pull it apart</button></div>
+<div class="copy">
+<h2>A rigid core under a soft shell</h2>
+<p>The core is PLA or PETG and holds the shape. Around it, a TPU shell soft enough to take pins, printed together with the core on a two-material printer.</p>
+<p>This one comes from our digital twin, a simulated person scanned by simulated phones and run through the real software. Open it, turn it, pull it apart.</p>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap">
+<div><h2>Wig heads, too</h2><p class="lead" style="margin:0">The same scan of a head and neck becomes a wig block shaped like the wearer.</p></div>
+<div><p>Draw the hairline on a cap before the scan. Doppelmaker finds the line in the photos and engraves it into the printed head as a fine groove, along with any other lines you mark, so the wig is built to the wearer's own hairline.</p></div>
+</div>
+</section>
+
+<section class="wrap section">
+<h2>What you need</h2>
+<div class="needs">
+<div><h3>Two iPhone Pros</h3><p>Pro models from iPhone 12 Pro onwards, on iOS 17. Only the Pros have LiDAR, which measures depth directly. <a href="/how-it-works.html#lidar">Why that matters</a></p></div>
+<div><h3>A Mac with Apple silicon</h3><p>Doppelmaker Studio does all the processing on the Mac, so nothing is uploaded anywhere.</p></div>
+<div><h3>A 3D printer and the rig</h3><p>A printer that does two materials is ideal. The rig is a turntable, two stands and a few printed parts. <a href="/rig.html">The rig</a></p></div>
+</div>
+</section>
+</main>
+<script type="module">
+const b = document.getElementById("load3d");
+b.addEventListener("click", async () => { b.disabled = true; b.textContent = "Loading the model";
+  try { const m = await import("/js/viewer.js"); await m.start(document.getElementById("viewer")); }
+  catch (e) { b.disabled = false; b.textContent = "The model didn't load. Try again"; console.error(e); } });
+</script>

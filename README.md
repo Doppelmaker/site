@@ -8,6 +8,11 @@ script is the home page's 3D viewer (three.js r160, self-hosted in `js/`, MIT, s
 Images in `img/shots/` and `models/form.glb` come from the digital twin (a simulated subject run
 through the real pipeline), rendered with three.js; they are not of a real person.
 
+Pages are built from `pages/*.html` (content) by `build.py`, which adds the shared header and
+footer. Edit the fragments in `pages/`, then run `python3 build.py`; commit both.
+
+Fonts: Young Serif and Public Sans, self-hosted in `fonts/` (OFL, licence files alongside).
+
 Preview locally:
 
 ```
