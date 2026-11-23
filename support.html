@@ -32,22 +32,38 @@
 <h3>Do I need the Mac app?</h3>
 <p>Yes. Scanner records; Studio on your Mac turns the recordings into a shape and print files. The phone does not process scans on its own.</p>
 
-<h3>The phone can't find my Mac</h3>
+<h3>Pairing a phone</h3>
+<p>Once per phone, on the same Wi-Fi as the Mac. In Studio, <b>Pair a phone…</b> shows a QR code. Point the iPhone's Camera at it and tap the banner, or in Scanner choose <b>Settings › This Mac › Pair… › Scan the code on the Mac</b>. There is nothing to type.</p>
+<p>Each code works for one phone, once, for five minutes, and is gone when the sheet closes; <b>Pair another phone</b> makes a new one. The code also tells the phone which certificate your Mac uses, so from then on the phone talks only to your Mac, encrypted, and nothing else on the network can read the recordings or pose as the Mac.</p>
+<p>Pair again after reinstalling either app, after Studio has forgotten the phone (<b>Settings › Phones › Forget</b>, or after it has gone unseen for the time set in <b>Library › Storage</b>), or when the phone asks you to.</p>
+
+<h3>The phone can't reach my Mac</h3>
 <ol class="steps">
 <li>Make sure Doppelmaker Studio is running on the Mac and both are on the same Wi-Fi network.</li>
-<li>On the iPhone, check Settings › Privacy &amp; Security › Local Network and allow Doppelmaker.</li>
-<li>Some guest or office networks block devices from seeing each other. In Scanner's settings you can type the Mac's address, which Studio shows on its start screen.</li>
-<li>After an update, update both apps: older and newer versions may not find each other.</li>
+<li>On the iPhone, check Settings › Privacy &amp; Security › Local Network and allow Doppelmaker. On the Mac, if macOS asks whether Doppelmaker Studio may accept incoming connections, allow it.</li>
+<li>If the Mac's network address changes, the phone finds it again by its name. If it still can't, pair it again: the new code carries the new address.</li>
+<li>Some guest or office networks block devices from seeing each other. Use a home network or a hotspot of your own.</li>
+<li>Update both apps together. A phone on another version shows in Studio's <b>Settings › Phones</b> as needing an update.</li>
 </ol>
 
-<h3>Pairing</h3>
-<p>Studio shows a 6-digit code; enter it in Scanner's settings. Pair again if you reinstall either app.</p>
-
 <h3>Where are my scans?</h3>
-<p>On the iPhone, in the Files app under On My iPhone › Doppelmaker, until they are sent to your Mac. On the Mac, in Studio's data folder (by default, the DoppelmakerData folder in your home folder).</p>
+<p>On the Mac, in Studio's <b>Library</b>: every scan, grouped by who was scanned, with a picture of the shape and a frame from the recording. <b>Load for printing</b> opens a scan's print plan as it was; <b>Re-open for changes</b> lets you edit it again. The files are in Studio's data folder (by default, DoppelmakerData in your home folder), which only your account on the Mac can read.</p>
+<p>On the iPhone, a recording stays in Scanner until Studio has it, then for three more days (sooner if the phone runs short of space), and is then deleted by itself. Scanner's <b>Recordings</b> list shows each one and whether Studio has it.</p>
+
+<h3>Printed forms stay as printed</h3>
+<p>Exporting a scan's print files (STL or Bambu Studio project) locks the scan: nothing is recomputed or edited, so a newer Studio never changes a shape you have already printed. <b>Re-open for changes</b> unlocks it. You can turn this off in <b>Library › Storage</b>.</p>
+
+<h3>Moving a scan to another Mac</h3>
+<p>Export a <b>scan archive</b> from the scan's Export stage (or the Library's ⋯ menu), and open it on the other Mac with <b>File › Open Scan from a File…</b>. Give a passphrase to encrypt it: the archive holds photos and a body shape. An encrypted archive (.dmscan) opens only in Doppelmaker Studio, and only with that passphrase.</p>
+
+<h3>Running out of space</h3>
+<p>Studio shows the space it uses in <b>Library › Storage</b>. <b>Clear system data</b> empties the Trash and removes unfinished uploads, old logs and picture caches, never your recordings, edits or exports. <b>Compact</b> (a scan's ⋯ menu) removes a scan's intermediate results and keeps what printing needs. Studio refuses new recordings rather than fill the disk.</p>
 
 <h3>Deleting data</h3>
-<p>Delete recordings in Scanner, or the Doppelmaker folder in Files. On the Mac, delete a client in Studio or remove its folder from the data folder. There is no copy anywhere else.</p>
+<p>Delete a scan in Studio (Library, or the scan's <b>Scan info</b>): it moves to Studio's Trash, which is emptied after 30 days, or at once with <b>Clear system data</b>. On the iPhone, swipe left on a recording in Scanner's Recordings list. There is no copy anywhere else.</p>
+
+<h3>Logs</h3>
+<p>Studio's log is in your home folder under Library › Logs › Doppelmaker (Studio's menu: <b>Show Logs</b>). It never contains pictures or shapes. If you send it with a problem report, check it first: it names your scans' subjects.</p>
 </div></main>
 <footer class="foot"><div class="wrap">
 <span>&copy; 2026 Greg Link. Doppelmaker is an independent project.</span>

@@ -12,7 +12,7 @@
 <li><a href="#new">Start a scan</a></li>
 <li><a href="#capture">Capture</a></li>
 <li><a href="#check">Check the result</a></li>
-<li><a href="#later">Come back to a scan later</a></li>
+<li><a href="#later">Come back to a scan later: the Library</a></li>
 <li><a href="#accuracy">Check the rig's accuracy</a></li>
 <li><a href="#messages">Messages</a></li>
 </ol></nav>
@@ -23,7 +23,7 @@
 <h2 id="window">The Studio window</h2>
 <p>Studio opens on <b>Home</b>, with nothing to fill in. One window holds everything:</p>
 <ul>
-<li><b>Sidebar:</b> Home, Rig, and your scans, grouped by subject.</li>
+<li><b>Sidebar:</b> Home, Library, Rig, and your scans, grouped by subject.</li>
 <li><b>Toolbar:</b> the page's title and <b>New Scan…</b> (⌘N). <b>Settings</b> is ⌘, or the button at the foot of the sidebar.</li>
 <li><b>Status bar:</b> both phones, the calibration, the empty room, and <b>Pair a phone…</b>. Click any of them to go to the Rig page.</li>
 </ul>
@@ -36,10 +36,10 @@
 <figcaption>Studio's places and the intents that connect them.</figcaption></figure>
 
 <h2 id="phones">Pair the phones</h2>
-<p>Once per phone. <b>Pair a phone…</b> shows a QR code. Point the iPhone's Camera at it and tap the banner, or in Doppelmaker choose <b>Settings › This Mac › Pair… › Scan the code on the Mac</b>. That's the whole pairing. The sheet also shows a six-digit code and the Mac's address, for typing in by hand.</p>
-<p>For the rig, set each phone's <b>Mode</b> to <b>Rig</b> in its Settings and put it on its stand. From then on Studio controls it: roles, recording settings (<b>Settings › Phones</b> on the Mac), and starting and stopping every take. You shouldn't need to touch the phones again for the rest of the day.</p>
+<p>Once per phone. <b>Pair a phone…</b> shows a QR code. Point the iPhone's Camera at it and tap the banner, or in Doppelmaker choose <b>Settings › This Mac › Pair… › Scan the code on the Mac</b>. That's the whole pairing: there is nothing to type. The code works for one phone, once, for five minutes, and it carries your Mac's certificate, so the phone talks only to your Mac, encrypted.</p>
+<p>Then put the phone on its stand. A paired phone is always a rig phone: Studio controls it from then on, with roles, recording settings (<b>Settings › Phones</b> on the Mac), and starting and stopping every take. You shouldn't need to touch the phones again for the rest of the day. Recordings the Mac has are deleted from the phone after a few days by themselves.</p>
 <figure class="fig"><img src="/img/guide/settings.webp" width="1200" height="750" alt="Studio's Settings sheet with General, Capture, Phones and Printing panes">
-<figcaption>Settings: General, Capture (default method, turn speed, how far to turn), Phones (roles, Identify, Forget, rig recording settings), Printing (defaults for new scans).</figcaption></figure>
+<figcaption>Settings: General, Capture (turn speed, how far to turn), Phones (roles, Identify, Forget, rig recording settings), Printing (defaults for new scans).</figcaption></figure>
 
 <h2 id="rig">Set up the rig</h2>
 <p>The <b>Rig</b> page shows four live views: each phone's colour picture and its LiDAR depth, coloured by distance, with anything outside the subject's zone dimmed. Check the subject is inside both phones' depth from neck to hips. The page warns when the top of the subject leaves a phone's view. It is set up once and stays set up until a phone moves. Steps along the top: Phones, Calibrate, Empty room, Ready. The space bar presses each step's main button.</p>
@@ -55,7 +55,7 @@
 <figcaption>Ready. From here, start a scan, or check the rig against the test target first.</figcaption></figure>
 
 <h2 id="new">Start a scan</h2>
-<p><b>New Scan…</b> asks three things: what you're scanning (a person's torso, a person's head, or the test target); who, which is optional and can be named later or never; and whether you're using the rig or one handheld phone. Studio never asks for gender: whether there is a bust to measure is read from the shape, and <b>Scan info</b> can change it.</p>
+<p><b>New Scan…</b> asks three things: what you're scanning (a person's torso, a person's head, or the test target); and who, which is optional and can be named later or never. Every scan is recorded on the rig; for a head, the phones go up to the head and the subject sits on a stool on the turntable. Studio never asks for gender: whether there is a bust to measure is read from the shape, and <b>Scan info</b> can change it.</p>
 <figure class="fig"><img src="/img/guide/new-scan.webp" width="1200" height="750" alt="The New Scan sheet"><figcaption>New Scan.</figcaption></figure>
 
 <h2 id="capture">Capture</h2>
@@ -67,22 +67,28 @@
 <figure class="fig" style="margin:0"><img src="/img/guide/receiving.webp" width="1200" height="750" alt="Receiving the scan from both phones"><figcaption>The phones send their recordings.</figcaption></figure>
 <figure class="fig" style="margin:0"><img src="/img/guide/finish.webp" width="1200" height="750" alt="Finish: Process scan"><figcaption>Finish: <b>Process scan</b> moves on to Scan check.</figcaption></figure>
 </div>
-<p>Handheld: record with Doppelmaker Scanner (<b>Scan torso</b> or <b>Scan head</b>). The recording comes to the open scan by itself, or starts a new one if none is open.</p>
 
 <h2 id="check">Check the result</h2>
-<p>The stages along the top light up as they finish. <b>Scan check</b> gives a verdict while the subject is still there, so you can scan again on the spot. <b>Outline diagnostics</b> and <b>Replay</b> open inside the window, with a way back.</p>
+<p>The stages along the top light up as they finish. <b>Scan check</b> gives a verdict while the subject is still there, so you can scan again on the spot. <b>Outline diagnostics</b> opens inside the window, with a way back.</p>
 <figure class="fig"><img src="/img/guide/studio-check.webp" width="1200" height="750" alt="Scan check: fused LiDAR points and the surface, with a verdict"><figcaption>Scan check.</figcaption></figure>
 <div class="duo">
 <figure class="fig" style="margin:0"><img src="/img/guide/studio-cuts.webp" width="1200" height="750" alt="Cuts: neck, shoulders, arms and hem"><figcaption>Cuts: drag the shoulder handles, or use the controls. Heights are given from the subject's neck base.</figcaption></figure>
 <figure class="fig" style="margin:0"><img src="/img/guide/studio-print.webp" width="1200" height="750" alt="Print plan: pieces on a rod and the print jobs"><figcaption>Print plan: pieces, sizes and support for your printer.</figcaption></figure>
 </div>
-<p><b>Export</b> makes a Bambu Studio project, the STL files, or a scan archive.</p>
+<p><b>Export</b> makes a Bambu Studio project, the STL files, or a scan archive (with a passphrase, an encrypted one). Exporting print files locks the scan for printing: nothing about its shape changes until you choose <b>Re-open for changes</b>, so a later Studio never alters a form you have printed.</p>
 
-<h2 id="later">Come back to a scan later</h2>
+<h2 id="later">Come back to a scan later: the Library</h2>
+<p>The <b>Library</b> shows every scan you have made, grouped by subject, with a picture of the shape, a frame from the recording, the main measurements, and whether it was printed. Find a subject by name, or show only torsos, heads or printed scans.</p>
 <ul>
-<li>Every scan stays in the sidebar. Open it and everything is as you left it, edits included.</li>
+<li><b>Load for printing</b> opens the scan's print plan just as it was, to print another copy or export again.</li>
+<li><b>Re-open for changes</b> opens it to edit; a scan locked for printing asks first.</li>
+<li>The <b>⋯</b> menu exports a scan archive, compacts a scan (keeps what printing needs, drops results that can be recomputed), locks or unlocks it, or deletes it.</li>
+<li><b>Storage</b>, at the top, shows what the data folder holds and how much space the Mac has left. <b>Clear system data</b> empties the Trash and removes unfinished uploads, old logs and picture caches. Below it, choose how long deleted scans, unfinished uploads and unused phones are kept, and whether old scans are compacted by themselves.</li>
+</ul>
+<ul>
+<li>Every scan also stays in the sidebar. Open it and everything is as you left it, edits included.</li>
 <li><b>Scan info</b> sets the title and the subject, overrides the chest, and offers <b>Reprocess</b>, which runs every stage again with the current Studio and keeps your recordings and edits.</li>
-<li><b>Open a scan from a file</b> (Home, or File menu) brings back a scan archive or a scan folder from another Mac. Recordings and edits come with it, and the rest is recomputed.</li>
+<li><b>Open a scan from a file</b> (Home, or File menu) brings back a scan archive (.zip, or an encrypted .dmscan with its passphrase) or a scan folder from another Mac. Recordings and edits come with it, and the rest is recomputed.</li>
 </ul>
 
 <h2 id="accuracy">Check the rig's accuracy</h2>
@@ -92,7 +98,9 @@
 <p>Problems appear in a <b>Needs attention</b> box under the step card, each with what to do.</p>
 <div class="tablewrap"><table class="parts">
 <tr><th>Message</th><th>What to do</th></tr>
-<tr><td>Phone A is offline.</td><td>Unlock it and open Doppelmaker (Mode: Rig). Same Wi-Fi as the Mac.</td></tr>
+<tr><td>Phone A is offline.</td><td>Unlock it and open Doppelmaker. Same Wi-Fi as the Mac.</td></tr>
+<tr><td>This Mac has 3.1 GB free; a take needs about 9 GB.</td><td>Free some space: Library › Storage › Clear system data, or compact old scans.</td></tr>
+<tr><td>This scan was exported for printing and is locked.</td><td>Re-open it for changes (the banner above the stages, or the Library) if you mean to change it.</td></tr>
 <tr><td>Phone B is hot.</td><td>Take it out of its case, keep it on its charger, and give it a few minutes.</td></tr>
 <tr><td>Phone A is at 15%.</td><td>Plug it in. LiDAR recording drains the battery quickly.</td></tr>
 <tr><td>Snapshot s04 disagrees with the others.</td><td>The castle probably moved during that snapshot. Open Calibration details and press Drop next to it.</td></tr>
