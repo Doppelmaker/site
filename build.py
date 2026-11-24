@@ -21,7 +21,7 @@ PAGES = {
                    "A walkthrough of a Doppelmaker session in Studio: what you see, what to do and what the messages mean.",
                    "guide", ""),
     "rig.html": ("The rig · Doppelmaker",
-                 "The capture setup: two iPhones, a turntable and a few printed parts, and what makes a good scan.",
+                 "The capture setup: two or three iPhones, a turntable and a few printed parts, and what makes a good scan.",
                  "rig", ""),
     "support.html": ("Support · Doppelmaker", "Help with Doppelmaker Scanner and Doppelmaker Studio.", "support", ""),
     "privacy.html": ("Privacy policy · Doppelmaker", "How Doppelmaker handles your data: it stays on your own devices.", "privacy", ""),
