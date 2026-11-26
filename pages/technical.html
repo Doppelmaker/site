@@ -373,6 +373,15 @@
 <h2 id="layouts">11. Where to put the phones</h2>
 <p>The turntable means every phone sees every part of her over a turn, whatever the layout. Layout decides what is seen <em>at the same instant</em> (which is what separates rigid sway from real shape change, breathing, and a moved arm), how squarely the LiDAR sees each surface, and whether the phones see each other.</p>
 <figure class="fig wide">
+<div class="viewer rig3d" id="rig3d"><img src="/img/paper/layouts.svg" width="960" height="520" alt="Top-down diagrams of phone layouts (static version of the 3D view)"><button class="load" id="loadrig">Open the rig in 3D (2 MB)</button><p class="hint">Drag to turn, scroll to zoom</p></div>
+<div class="rigctl" id="rigctl" hidden>
+<div><span>Layout</span><div class="seg" id="riglayouts"></div></div>
+<div><span>LiDAR rows from phone A</span><div class="seg" id="rigrows"></div></div>
+<p id="rigout" aria-live="polite"></p>
+</div>
+<figcaption>Interactive figure. The project's twin dress form with the phones 1 m from the axis (A at the navel tilted up 10°, B above the shoulders tilted down 12°, C at the chest), each phone's portrait field of view and optical axis, and the two outline rays each phone draws at the waist at one instant. A phone that has another inside its field turns magenta. The LiDAR rows (Section 2.2) are painted on the body at the heights phone A's fixed dot rows reach it; the turntable sweeps each one round her.</figcaption>
+</figure>
+<figure class="fig wide">
 <img src="/img/paper/layouts.svg" alt="Eight top-down diagrams of phones around an elliptical body, with outline directions as arrows. Two phones: 0/60 gap 120°, 0/90 gap 90°, 0/120 gap 120°, 0/180 gap 180° with the phones facing. Three: 0/120/240 gap 60°, 0/90/235 gap 90° and phones 17.5° off axis, 0/90/180 gap 90° with phones facing, 0/60/120 gap 60°." width="960" height="520">
 <figcaption>Figure 13. Each phone bounds the body at one instant in two directions, perpendicular to its view (its left and right edges). Orange arrows: those directions. Below each: the widest angle in which nothing bounds the body at that instant, and how close any phone comes to another's optical axis.</figcaption>
 </figure>
@@ -451,3 +460,11 @@
 <p class="updated">Written 25 November 2026, against Doppelmaker 0.8.0. Experiments: the project's calibration solver on projected corners (288 calibrations, two noise levels, three targets, two layouts), intrinsics and distortion sweeps (57 calibrations), layout geometry on an elliptical section, and the arithmetic in each section. The other pages: <a href="/how-it-works.html">How it works</a> (the same story without the maths), <a href="/rig.html">The rig</a>, <a href="/guide.html">Guide</a>.</p>
 </article>
 </main>
+<script type="module">
+const b = document.getElementById("loadrig");
+b.addEventListener("click", async () => { b.disabled = true; b.textContent = "Loading the model";
+  try { const m = await import("/js/rig3d.js");
+    await m.start(document.getElementById("rig3d"), { panel: document.getElementById("rigctl"), layouts: document.getElementById("riglayouts"),
+      rows: document.getElementById("rigrows"), out: document.getElementById("rigout") }); }
+  catch (e) { b.disabled = false; b.textContent = "The model didn't load. Try again"; console.error(e); } });
+</script>

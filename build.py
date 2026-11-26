@@ -25,7 +25,7 @@ PAGES = {
                  "rig", ""),
     "technical.html": ("How Doppelmaker measures: a technical paper · Doppelmaker",
                        "Every stage from photons to a closed, measured surface: calibration, timing, outlines, LiDAR, tracking and closing, with the numbers and the open questions.",
-                       "technical", ""),
+                       "technical", '<script type="importmap">{"imports":{"three":"/js/three.module.min.js"}}</script>'),
     "support.html": ("Support · Doppelmaker", "Help with Doppelmaker Scanner and Doppelmaker Studio.", "support", ""),
     "privacy.html": ("Privacy policy · Doppelmaker", "How Doppelmaker handles your data: it stays on your own devices.", "privacy", ""),
     "404.html": ("Not found · Doppelmaker", "Page not found.", "", ""),

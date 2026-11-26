@@ -196,3 +196,14 @@ table.findings td:first-child { font-weight: 600; }
 table.findings td:nth-child(4) { min-width: 16em; }
 .refs { font-size: 15px; }
 .refs li { overflow-wrap: anywhere; }
+.viewer.rig3d { height: 520px; background: radial-gradient(90% 90% at 50% 35%, #fbfaf6, #e2dfd4); }
+.viewer.rig3d > img { max-height: 420px; width: auto; padding: 0; background: none; }
+.rigctl { display: grid; gap: 10px; margin-top: 12px; font-size: 14.5px; }
+.rigctl > div { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.rigctl span { color: var(--ink-2); font-weight: 600; min-width: 13em; }
+.rigctl .seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.rigctl button { font: 600 13.5px var(--sans); border: 1px solid var(--rule); background: var(--sheet); color: var(--ink); border-radius: 999px; padding: 5px 11px; cursor: pointer; }
+.rigctl button[aria-pressed="true"] { background: var(--mat); color: var(--form); border-color: var(--mat); }
+.rigctl p { margin: 0; color: var(--ink-2); }
+.rigctl .bad { color: #b0408a; }
+@media (max-width: 600px) { .viewer.rig3d { height: 400px; } }
