@@ -190,7 +190,7 @@
 <h2 id="intrinsics">4. The intrinsics nobody checks</h2>
 <p>Every projection in the pipeline (calibration, outlines, LiDAR back-projection) uses the pinhole <var>K</var> that ARKit attaches to the frame, with no lens distortion. The experiments below show where that model is safe and where it is not.</p>
 <h3>4.1 Focal length</h3>
-<p>The project's tree calibration was run with the solver given a focal length off by ε (−1 % to +1 %), then the girth of a 150 mm-radius vertical cylinder on the axis was rebuilt from the four outline planes of two phones, using the calibration it had just produced. Two cases: the same ε in calibration and scan, and a correct calibration followed by a scan with ε (as if focus moved between them and ARKit's <var>K</var> did not follow).</p>
+<p>The tree calibration was run with the solver given a focal length off by ε (−1 % to +1 %), then the girth of a 150 mm-radius vertical cylinder on the axis was rebuilt from the four outline planes of two phones, using the calibration it had just produced. Two cases: the same ε in calibration and scan, and a correct calibration followed by a scan with ε (as if focus moved between them and ARKit's <var>K</var> did not follow).</p>
 <figure class="fig wide">
 <img src="/img/paper/focal.svg" alt="Left: girth error against focal error. Same error in calibration and scan: under 1 mm at 1 %. Scan only: about 9 mm per 1 %. Right: true phone pose error grows to 15 mm at 1 % while the reported misalignment stays at 0.3–0.5 mm." width="760" height="330">
 <figcaption>Figure 6. A focal-length error. Left: the girth of a 942 mm cylinder rebuilt from outlines. Right: phone B's true pose error, and what the calibration reports.</figcaption>
