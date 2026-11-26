@@ -23,12 +23,16 @@ PAGES = {
     "rig.html": ("The rig · Doppelmaker",
                  "The capture setup: two or three iPhones, a turntable and a few printed parts, and what makes a good scan.",
                  "rig", ""),
+    "technical.html": ("How Doppelmaker measures: a technical paper · Doppelmaker",
+                       "Every stage from photons to a closed, measured surface: calibration, timing, outlines, LiDAR, tracking and closing, with the numbers and the open questions.",
+                       "technical", ""),
     "support.html": ("Support · Doppelmaker", "Help with Doppelmaker Scanner and Doppelmaker Studio.", "support", ""),
     "privacy.html": ("Privacy policy · Doppelmaker", "How Doppelmaker handles your data: it stays on your own devices.", "privacy", ""),
     "404.html": ("Not found · Doppelmaker", "Page not found.", "", ""),
 }
 
 NAV = [("how", "/how-it-works.html", "How it works"), ("rig", "/rig.html", "The rig"), ("guide", "/guide.html", "Guide"),
+       ("technical", "/technical.html", "Technical"),
        ("support", "/support.html", "Support")]
 
 HEAD = """<!doctype html>
