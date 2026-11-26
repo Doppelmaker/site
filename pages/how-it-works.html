@@ -48,7 +48,7 @@
 </ul>
 
 <h2 id="fusion">Why combine camera and LiDAR</h2>
-<p>The camera is LiDAR's opposite: sharp but flat. In a camera image, the edge of the body is crisp. At a metre away, one pixel covers about a millimetre, so the camera knows exactly where their outline is, <em>sideways</em>. What it can't say is how far away that edge is.</p>
+<p>The camera is LiDAR's opposite: sharp but flat. In a camera image, the edge of the body is crisp. At a metre away, one pixel covers about a millimetre and a half (in the frames the phones record), so the camera knows exactly where their outline is, <em>sideways</em>. What it can't say is how far away that edge is.</p>
 <p>An outline still says something precise about the 3D shape. Think of the line from the camera through one point of their outline, out into the room. That line just grazes their body: it touches them somewhere along its length and never goes inside. Every outline point gives one of these tangent lines, and together they fence the body in from that camera's direction.</p>
 <figure class="fig">
 <svg class="diagram" viewBox="0 0 580 320" role="img" aria-label="Top-down view: a cross-section of the body as a rounded shape. From camera A below it, two lines just touch its left and right sides; from camera B to its right, two lines just touch its front and back. The four lines fence the body in.">
@@ -127,5 +127,6 @@
 <p>Every step reports checks: how far the phones' views agree, how much they moved, how much of the surface was guessed rather than seen. If something is off, Studio says what and where, so you can scan again while they're still there.</p>
 <p>Before any of this touches a real person, it runs on a <b>digital twin</b>: a simulated person with a known shape, scanned by simulated phones with realistic noise, biases, sway and even passers-by. Because the true shape is known, every number can be checked. The images on this site come from that twin.</p>
 <p>For the real world, there is a printed <b>test target</b> whose exact shape is known. Scanning it measures the whole chain end to end, from the phones' lenses to the printed parts.</p>
+<p>The same story with the maths, the parameters and the open questions: <a href="/technical.html">How Doppelmaker measures, a technical paper</a>.</p>
 </article>
 </main>
